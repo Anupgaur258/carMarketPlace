@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .footer {
+            background: linear-gradient(135deg, #333, #555);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+            animation: slideIn 1s ease-out;
+        }
+        
+        .footer .logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .footer .nav-links,
+        .footer .social-links,
+        .footer .contact-info {
+            margin: 10px 0;
+        }
+        
+        .footer .nav-links a,
+        .footer .social-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .footer .nav-links a:hover,
+        .footer .social-links a:hover {
+            color: #f4a261;
+        }
+        
+        .footer .contact-info p {
+            margin: 5px 0;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .footer .social-links a {
+            font-size: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        .footer .text {
+            margin-top: 20px;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        @media (max-width: 768px) {
+            .footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes bounce {
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo">B-TOWN CARZ</div>
+            <br>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../about.html">About</a>
+                <a href="../dreamCar.html">DreamCar</a>
+                <a href="../userAddcar.html">Post</a>
+
+                <a href="../contact.html"> Contact</a>
+            </div>
+            <div class="contact-info">
+                <p>Phone: +91 9012768055</p>
+                <p>Email: btowncarz8055@mail.com</p>
+                <p>Location: Bareilly, Uttar Pradesh, India</p>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="text">
+                <p>© 2024 B-TOWN CARZ. All rights reserved.</p>
+                <p>Your trusted marketplace for buying and selling second-hand cars.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

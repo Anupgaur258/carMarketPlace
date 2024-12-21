@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #e3f2fd, #bbdefb);
+            color: #333;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        
+        h2 {
+            text-align: center;
+            color: #0288d1;
+            margin-bottom: 20px;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contact-form label {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form button {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .contact-form textarea {
+            resize: none;
+            height: 100px;
+        }
+        
+        .contact-form button {
+            background-color: #0288d1;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .contact-form button:hover {
+            background-color: #026aa7;
+        }
+        
+        .contact-icons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .contact-icons a {
+            margin: 0 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .contact-icons img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-icons img:hover {
+            transform: scale(1.1);
+        }
+        /* Navbar Styling */
+        
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .html {
+            font-size: 62.5%;
+        }
+        
+        .navbar input[type="checkbox"],
+        .navbar .hamburger-lines {
+            display: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 90%;
+            margin: auto;
+        }
+        
+        .navbar {
+            box-shadow: 0px 5px 10px 0px #aaa;
+            position: fixed;
+            width: 100%;
+            background: #fff;
+            color: #000;
+            opacity: 0.85;
+            z-index: 100;
+        }
+        
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            height: 64px;
+            align-items: center;
+        }
+        
+        .menu-items {
+            order: 2;
+            display: flex;
+        }
+        
+        .logo {
+            order: 1;
+            font-size: 2.3rem;
+        }
+        
+        .menu-items li {
+            list-style: none;
+            margin-left: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .navbar a {
+            color: #444;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease-in-out;
+        }
+        
+        .navbar a:hover {
+            color: #117964;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                opacity: 0.95;
+            }
+            .navbar-container input[type="checkbox"],
+            .navbar-container .hamburger-lines {
+                display: block;
+            }
+            .navbar-container {
+                display: block;
+                position: relative;
+                height: 64px;
+            }
+            .navbar-container input[type="checkbox"] {
+                position: absolute;
+                display: block;
+                height: 32px;
+                width: 30px;
+                top: 20px;
+                left: 20px;
+                z-index: 5;
+                opacity: 0;
+                cursor: pointer;
+            }
+            .navbar-container .hamburger-lines {
+                display: block;
+                height: 28px;
+                width: 35px;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                z-index: 2;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .navbar-container .hamburger-lines .line {
+                display: block;
+                height: 4px;
+                width: 100%;
+                border-radius: 10px;
+                background: #333;
+            }
+            .navbar-container .hamburger-lines .line1 {
+                transform-origin: 0% 0%;
+                transition: transform 0.3s ease-in-out;
+            }
+            .navbar-container .hamburger-lines .line2 {
+                transition: transform 0.2s ease-in-out;
+            }
+            .navbar-container .hamburger-lines .line3 {
+                transform-origin: 0% 100%;
+                transition: transform 0.3s ease-in-out;
+            }
+            .navbar .menu-items {
+                padding-top: 100px;
+                background: #fff;
+                height: 100vh;
+                max-width: 300px;
+                transform: translate(-150%);
+                display: flex;
+                flex-direction: column;
+                margin-left: -40px;
+                padding-left: 40px;
+                transition: transform 0.5s ease-in-out;
+                box-shadow: 5px 0px 10px 0px #aaa;
+                overflow: scroll;
+            }
+            .navbar .menu-items li {
+                margin-bottom: 1.8rem;
+                font-size: 1.1rem;
+                font-weight: 500;
+            }
+            .logo {
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                font-size: 2.5rem;
+            }
+            .navbar-container input[type="checkbox"]:checked~.menu-items {
+                transform: translateX(0);
+            }
+            .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
+                transform: rotate(45deg);
+            }
+            .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
+                transform: scaleY(0);
+            }
+            .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
+                transform: rotate(-45deg);
+            }
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #d7e9f7, #ffffff);
+            color: #333;
+        }
+        
+        .title {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2.5rem;
+            color: #0056b3;
+            text-shadow: 1px 1px 4px #aaa;
+        }
+        
+        .car-collection {
+            padding: 20px;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 10px;
+        }
+        
+        .car-card {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .car-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .car-card h2 {
+            margin: 10px;
+            font-size: 1.5rem;
+            color: #0056b3;
+        }
+        
+        .car-card p {
+            margin: 10px;
+            font-size: 1rem;
+            color: #555;
+        }
+        
+        .car-card button {
+            margin: 10px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .car-card button:hover {
+            background-color: #c9302c;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .add-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: bounce 1s infinite;
+        }
+        
+        .add-button:hover {
+            background-color: #003d80;
+        }
+        
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        #addCarForm {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform 0.3s ease;
+            width: 90%;
+            max-width: 500px;
+            box-sizing: border-box;
+        }
+        
+        #addCarForm.open {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        #addCarForm label {
+            display: block;
+            margin: 10px 0;
+            font-size: 1rem;
+            color: #333;
+        }
+        
+        #addCarForm input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        #addCarForm input,
+        #addCarForm textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        #addCarForm button {
+            margin: 10px 5px 0 0;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        #addCarForm button[type="button"] {
+            background-color: #0056b3;
+            color: white;
+        }
+        
+        #addCarForm button[type="button"]:hover {
+            background-color: #003d80;
+        }
+        
+        #addCarForm button[type="reset"] {
+            background-color: #d9534f;
+            color: white;
+        }
+        
+        #addCarForm button[type="reset"]:hover {
+            background-color: #c9302c;
+        }
+        
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .image-preview {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .image-preview img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            .car-card img {
+                height: 150px;
+            }
+            .add-button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+        /* footer start */
+        
+        .footer {
+            background: linear-gradient(135deg, #ff5512, #240202);
+            color: #faf1f1;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 8px;
+            border-radius: 4px;
+            ;
+        }
+        
+        .footer .container {
+            background: linear-gradient(135deg, #ff5512, #240202);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            padding: 12px;
+            animation: slideIn 1s ease-out;
+        }
+        
+        .footer .logo {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            font-size: 24px;
+            padding: 5px;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .footer .logo img {
+            margin-top: 3px;
+            padding: 5px;
+            height: 60px;
+            width: 80px;
+            border-radius: 5px;
+        }
+        
+        .footer .nav-links,
+        .footer .social-links,
+        .footer .contact-info {
+            margin: 10px 0;
+        }
+        
+        .footer .nav-links a,
+        .footer .social-links a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .footer .nav-links a:hover,
+        .footer .social-links a:hover {
+            color: #f1bc0a;
+        }
+        
+        .footer .contact-info p {
+            margin: 5px 0;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .footer .social-links a {
+            font-size: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        .footer .text {
+            margin-top: 20px;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        @media (max-width: 768px) {
+            .footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes bounce {
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container container">
+            <input type="checkbox" name="" id="">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li>
+                    <a href="dreamCar.html">Dream Car</a>
+                </li>
+                <li>
+                    <a href="userAddcar.html">Post</a>
+                </li>
+                <li><a href=" contact.html ">Contact</a></li>
+            </ul>
+            <h3 class="logo ">B-Town</h3>
+        </div>
+    </nav>
+    <br> <br> <br><br> <br> <br>
+    <div class="container ">
+
+        <h2>Contact Us</h2>
+        <form class="contact-form " id="contactForm ">
+            <label for="name ">Name</label>
+            <input type="text " id="name " name="name " placeholder="Your Name " required>
+
+            <label for="email ">Email</label>
+            <input type="email " id="email " name="email " placeholder="Your Email " required>
+
+            <label for="phone ">Phone</label>
+            <input type="tel " id="phone " name="phone " placeholder="Your Phone Number " required>
+
+            <label for="message ">Message</label>
+            <textarea id="message " name="message " placeholder="Your Message " required></textarea>
+
+            <button type="submit ">Submit</button>
+        </form>
+        <div class="contact-icons ">
+            <a href="https://wa.me/919997889509" target="_blank" id=" whatsappLink " title="WhatsApp ">
+                <img src="assets/images/whatsAppLogo.jpeg " alt="WhatsApp ">
+            </a>
+            <a href="tel:+91 9012768055 " id=" " title="Phone ">
+                <img src="assets/images/phoneLogo.jpeg " alt="WhatsApp ">
+            </a>
+            <a href="https://www.instagram.com/btowncarz.in/profilecard/?igsh=MTVudDlqNzFocDViYQ==" id=" whatsappLink " title="E-mail ">
+                <img src="assets/images/instagramLogo2.jpeg " alt="WhatsApp ">
+            </a>
+            <a href="#https://www.facebook.com/profile.php?id=61569413332369&mibextid=ZbWKwL " id="whatsappLink " title="instagram ">
+                <img src="assets/images/facebookLogo2.jpeg " alt="WhatsApp ">
+            </a>
+            <a href="mailto:btowncarz8055@gmail.com " id="whatsappLink " title="instagram ">
+                <img src="assets/images/emailLogo.jpeg " alt="WhatsApp ">
+            </a>
+            <a href=" https://youtube.com/@b-towncarz?si=ya8463vuiiYYQiOl " id="whatsappLink " title="instagram ">
+                <img src="assets/images/youtubelogo.jpeg " alt="WhatsApp ">
+            </a>
+
+        </div>
+    </div>
+
+    <br>
+    <hr>
+    <!-- Footer Section -->
+    <footer class="footer ">
+        <div class="container "><br>
+
+            <div>
+                <br>
+                <div class="logo ">
+                    <img src="assets/images/logo.jpg" alt="logo ">
+                </div> <br>
+            </div>
+
+            <div class="nav-links ">
+                <a href="index.html ">Home</a>
+                <a href="about.html ">About</a>
+                <a href="dreamCar.html ">Dream Car</a>
+                <a href="userAddcar.html ">Post </a>
+                <a href="contact.html ">Contact</a>
+            </div>
+            <div class="contact-info ">
+                <p>Phone: +91 9012768055</p>
+                <p>Email: btowncarz8055@gmail.com</p>
+                <p>Location: Bareilly, Uttar Pradesh, India</p>
+            </div>
+            <div class="social-links ">
+                <a href="# "><i class="fab fa-facebook-f "></i></a>
+                <a href="# "><i class="fab fa-twitter "></i></a>
+                <a href="# "><i class="fab fa-instagram "></i></a>
+                <a href="# "><i class="fab fa-youtube "></i></a>
+                <a href="# "><i class="fab fa-whatsapp "></i></a>
+            </div>
+            <div class="text ">
+                <p>© 2024 B-TOWN CARZ. All rights reserved.</p>
+                <p>Your trusted marketplace for buying and selling second-hand cars.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const whatsappLink = document.getElementById('whatsappLink');
+
+        form.addEventListener('submit', async(event) => {
+            event.preventDefault();
+
+            // Form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            // Email API URL (Formspree)
+            const emailAPI = 'https://formspree.io/f/{your-form-id}'; // Replace with your Formspree form ID
+
+            // Send form data to Formspree API
+            try {
+                const response = await fetch(emailAPI, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        phone,
+                        message
+                    }),
+                });
+
+                if (response.ok) {
+                    // Open WhatsApp with message
+                    const whatsappMessage = encodeURIComponent(`New Contact Form Submission:\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nMessage: ${message}`);
+                    whatsappLink.href = `https://api.whatsapp.com/send?phone=+917078367901&text=${whatsappMessage}`;
+                    whatsappLink.click();
+                } else {
+                    alert('Error sending form. Please try again.');
+                }
+            } catch (error) {
+                alert('Something went wrong. Please try again later.');
+            }
+        });
+    </script>
+</body>
+
+</html>

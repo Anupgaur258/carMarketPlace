@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Form Modal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css">
+    <style>
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black background with opacity */
+        }
+        
+        .modal-content {
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 5px;
+            width: 60%;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .close {
+            float: right;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .btn-add {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            /* Keeps it above other elements */
+            background-color: #007bff;
+            /* Bootstrap Primary Color */
+            color: white;
+            border: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .btn-add:hover {
+            transform: scale(1.1);
+            /* Slightly enlarge on hover */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+            /* Increase shadow on hover */
+        }
+        
+        .btn-add:active {
+            transform: scale(0.95);
+            /* Slightly shrink on click */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            /* Reduce shadow on click */
+        }
+        
+        .card img {
+            height: 150px;
+            width: 100%;
+            object-fit: cover;
+        }
+        /* Navbar Styling */
+        
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .html {
+            font-size: 62.5%;
+        }
+        
+        .navbar input[type="checkbox"],
+        .navbar .hamburger-lines {
+            display: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 90%;
+            margin: auto;
+        }
+        
+        .navbar {
+            box-shadow: 0px 5px 10px 0px #aaa;
+            position: fixed;
+            width: 100%;
+            background: #fff;
+            color: #000;
+            opacity: 0.85;
+            z-index: 100;
+        }
+        
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            height: 64px;
+            align-items: center;
+        }
+        
+        .menu-items {
+            order: 2;
+            display: flex;
+        }
+        
+        .logo {
+            order: 1;
+            font-size: 2.3rem;
+        }
+        
+        .menu-items li {
+            list-style: none;
+            margin-left: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .navbar a {
+            color: #444;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease-in-out;
+        }
+        
+        .navbar a:hover {
+            color: #117964;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                opacity: 0.95;
+            }
+            .navbar-container input[type="checkbox"],
+            .navbar-container .hamburger-lines {
+                display: block;
+            }
+            .navbar-container {
+                display: block;
+                position: relative;
+                height: 64px;
+            }
+            .navbar-container input[type="checkbox"] {
+                position: absolute;
+                display: block;
+                height: 32px;
+                width: 30px;
+                top: 20px;
+                left: 20px;
+                z-index: 5;
+                opacity: 0;
+                cursor: pointer;
+            }
+            .navbar-container .hamburger-lines {
+                display: block;
+                height: 28px;
+                width: 35px;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                z-index: 2;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .navbar-container .hamburger-lines .line {
+                display: block;
+                height: 4px;
+                width: 100%;
+                border-radius: 10px;
+                background: #333;
+            }
+            .navbar-container .hamburger-lines .line1 {
+                transform-origin: 0% 0%;
+                transition: transform 0.3s ease-in-out;
+            }
+            .navbar-container .hamburger-lines .line2 {
+                transition: transform 0.2s ease-in-out;
+            }
+            .navbar-container .hamburger-lines .line3 {
+                transform-origin: 0% 100%;
+                transition: transform 0.3s ease-in-out;
+            }
+            .navbar .menu-items {
+                padding-top: 100px;
+                background: #fff;
+                height: 100vh;
+                max-width: 300px;
+                transform: translate(-150%);
+                display: flex;
+                flex-direction: column;
+                margin-left: -40px;
+                padding-left: 40px;
+                transition: transform 0.5s ease-in-out;
+                box-shadow: 5px 0px 10px 0px #aaa;
+                overflow: scroll;
+            }
+            .navbar .menu-items li {
+                margin-bottom: 1.8rem;
+                font-size: 1.1rem;
+                font-weight: 500;
+            }
+            .logo {
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                font-size: 2.5rem;
+            }
+            .navbar-container input[type="checkbox"]:checked~.menu-items {
+                transform: translateX(0);
+            }
+            .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
+                transform: rotate(45deg);
+            }
+            .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
+                transform: scaleY(0);
+            }
+            .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
+                transform: rotate(-45deg);
+            }
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #333, #555);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+            animation: slideIn 1s ease-out;
+        }
+        
+        .footer .logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .footer .nav-links,
+        .footer .social-links,
+        .footer .contact-info {
+            margin: 10px 0;
+        }
+        
+        .footer .nav-links a,
+        .footer .social-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .footer .nav-links a:hover,
+        .footer .social-links a:hover {
+            color: #f4a261;
+        }
+        
+        .footer .contact-info p {
+            margin: 5px 0;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .footer .social-links a {
+            font-size: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        .footer .text {
+            margin-top: 20px;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        @media (max-width: 768px) {
+            .footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes bounce {
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container container">
+            <input type="checkbox" name="" id="">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="carcollection.html">Collection</a></li>
+                <li>
+                    <a href="#">Posts</a>
+                </li>
+                <li>
+                    <a href="#">Dream Car</a>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <h3 class="logo">B-Town</h3>
+        </div>
+    </nav>
+    <br> <br>
+    <!-- Add Button -->
+    <button class="btn btn-primary btn-add" id="addCarBtn">+</button>
+
+
+    <!-- Car Cards Section -->
+    <div class="container my-5">
+        <div class="row g-4">
+            <!-- Card 1 -->
+            <div class="col-sm-6 col-md-3">
+                <div class="card shadow-sm">
+                    <img src="assets/images/fortunorImg.webp" class="card-img-top" alt="Car Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Car Name: Tesla Model S</h5>
+                        <p class="card-text">Year: 2023</p>
+                        <p class="card-text">Model: Electric</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-sm-6 col-md-3">
+                <div class="card shadow-sm">
+                    <img src="assets/images/scropioImg.jpg" class="card-img-top" alt="Car Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Car Name: BMW X5</h5>
+                        <p class="card-text">Year: 2022</p>
+                        <p class="card-text">Model: SUV</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-sm-6 col-md-3">
+                <div class="card shadow-sm">
+                    <img src="assets/images/fortunorImg.webp" class="card-img-top" alt="Car Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Car Name: Audi A6</h5>
+                        <p class="card-text">Year: 2021</p>
+                        <p class="card-text">Model: Sedan</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-sm-6 col-md-3">
+                <div class="card shadow-sm">
+                    <img src="assets/images/fortunorImg.webp" class="card-img-top" alt="Car Image">
+                    <div class="card-body">
+                        <h5 class="card-title">Car Name: Ford Mustang</h5>
+                        <p class="card-text">Year: 2020</p>
+                        <p class="card-text">Model: Coupe</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Form -->
+    <div id="carModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 class="text-center">Add Car Details</h3>
+            <form id="addCarForm">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Car Name:</label>
+                        <input type="text" id="carName" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Year:</label>
+                        <input type="text" id="carYear" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Brand:</label>
+                        <input type="text" id="carBrand" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Model:</label>
+                        <input type="text" id="carModel" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Fuel:</label>
+                        <input type="text" id="carFuel" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Transmission:</label>
+                        <input type="text" id="carTransmission" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Owner:</label>
+                        <input type="text" id="carOwner" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Driven:</label>
+                        <input type="text" id="carDriven" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Price:</label>
+                        <input type="text" id="carPrice" class="form-control" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>City:</label>
+                        <input type="text" id="carCity" class="form-control" required>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label>Description:</label>
+                        <textarea id="carDescription" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label>Car Images:</label>
+                        <input type="file" id="carImages" class="form-control" accept="image/png, image/jpeg" multiple required>
+                    </div>
+                </div>
+                <div class="text-end">
+                    <button type="button" class="btn btn-success" onclick="addCar()">Add Car</button>
+                    <button type="reset" class="btn btn-danger" onclick="hideAddCarForm()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo">B-TOWN CARZ</div>
+            <br>
+            <div class="nav-links ">
+                <a href="index.html ">Home</a>
+                <a href="about.html ">About</a>
+                <a href="dreamCar.html ">Dream Car</a>
+                <a href="userAddcar.html ">Post </a>
+                <a href="contact.html ">Contact</a>
+            </div>
+            <div class="contact-info">
+                <p>Phone: +91 9012768055</p>
+                <p>Email: btowncarz8055@gmail.com</p>
+                <p>Location: Bareilly, Uttar Pradesh, India</p>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="text">
+                <p>© 2024 B-TOWN CARZ. All rights reserved.</p>
+                <p>Your trusted marketplace for buying and selling second-hand cars.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+        // Modal Elements
+        const modal = document.getElementById('carModal');
+        const addCarBtn = document.getElementById('addCarBtn');
+        const closeBtn = document.querySelector('.close');
+
+        // Show Modal
+        addCarBtn.onclick = function() {
+            modal.style.display = 'block';
+        };
+
+        // Close Modal
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        };
+
+        // Close Modal When Clicking Outside
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+
+        // Function to Add Car (For Now Just Logs the Input Values)
+        function addCar() {
+            alert('Car Added Successfully!');
+            modal.style.display = 'none';
+        }
+
+        // Hide Modal on Cancel
+        function hideAddCarForm() {
+            modal.style.display = 'none';
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

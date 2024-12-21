@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Marketplace</title>
+
+    <!-- AOS Library CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #72d4ec, #f4a261);
+        }
+        
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        
+        .about-section,
+        .review-section,
+        .map-section,
+        .faq-section {
+            padding: 20px;
+            background: #fff;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-section h2,
+        .review-section h2,
+        .map-section h2,
+        .faq-section h2 {
+            color: #333;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+        }
+        
+        .about-content img {
+            width: 300px;
+            height: auto;
+            margin-left: 20px;
+            border-radius: 8px;
+        }
+        
+        .review {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .review img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        
+        .review .stars {
+            color: #f39c12;
+            margin-left: 10px;
+        }
+        
+        .faq-section .faq {
+            margin-bottom: 10px;
+        }
+        
+        .faq-section .faq h3 {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f4a261;
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+        }
+        
+        .faq-section .faq p {
+            display: none;
+            padding: 10px;
+            background: #f4f4f4;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        
+        .faq-section .faq.active p {
+            display: block;
+        }
+        
+        .faq-section .faq h3::after {
+            content: '▼';
+            font-size: 16px;
+        }
+        
+        .faq-section .faq.active h3::after {
+            content: '▲';
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .about-content img {
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <section class="about-section">
+            <h2>About Us – B-townCarz.in
+            </h2>
+            <div class="about-content">
+                <div>
+
+                    <p>Welcome to B-townCarz.in, Uttar Pradesh’s trusted online marketplace for buying, selling, and advertising cars. We are dedicated to making car transactions simple and efficient for individuals and dealers alike. Whether you’re selling
+                        your vehicle, promoting your dealership’s inventory, or searching for your dream car, BtownCarz offers a secure and easy-to-use platform to meet your needs. Sellers can list their cars to reach a wide audience, dealers can boost
+                        visibility for their vehicles, and buyers can explore a variety of options or place requests for specific cars. Join us today to experience the smarter way to buy and sell cars!</p>
+                </div>
+                <img src="https://wallpaperaccess.com/full/740033.jpg" alt="Car Image">
+            </div>
+        </section>
+
+        <section class="review-section">
+            <h2>Customer Reviews</h2>
+            <div class="review">
+                <img src="https://th.bing.com/th/id/OIP.gzQomoGnGo4uVhytviHrRgHaJy?rs=1&pid=ImgDetMain " alt=" Customer 1 ">
+                <div>
+                    <p>"Great platform to buy and sell cars. The process was smooth and hassle-free! " - Ravi K.</p>
+                    <div class="stars ">★★★★★</div>
+                </div>
+            </div>
+            <div class="review ">
+                <img src="https://th.bing.com/th/id/OIP.ekyxA8IowhC1_8gW6jSYXwHaHa?rs=1&pid=ImgDetMain" alt="Customer 2 ">
+                <div>
+                    <p>"I found the perfect car for my needs. Highly recommend Car Marketplace! " - Priya S.</p>
+                    <div class="stars ">★★★★★</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="map-section ">
+            <h2>Our Location</h2>
+            <p>Address: Bareilly, Uttar Pradesh, India</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.9999999999995!2d79.43000000000001!3d28.367000000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDIyJzAxLjIiTiA3OcKwMjUnNTguMCJF!5e0!3m2!1sen!2sin!4v1634567890123!5m2!1sen!2sin "
+                width="100% " height="400 " style="border:0; " allowfullscreen=" " loading="lazy "></iframe>
+        </section>
+
+        <section class="faq-section ">
+            <h2>Frequently Asked Questions (FAQs)</h2>
+            <div class="faq ">
+                <h3>Is it free to list my car for sale?</h3>
+                <p>Yes, individuals can list their cars for free. Additional premium features for better visibility are available at a nominal cost.</p>
+            </div>
+            <div class="faq ">
+                <h3>What documents do I need to sell my car?</h3>
+                <p>You should know basic details about your posting car.</p>
+            </div>
+            <div class="faq ">
+                <h3>How can dealers promote their inventory?</h3>
+                <p>You can list your cars using dealership and you can promote your cars using our social media platform.</p>
+            </div>
+            <div class="faq ">
+                <h3>Can I request a dream car if it’s not listed?</h3>
+                <p>Absolutely! Use our "Your Dream Car " feature to specify your preferences, and we’ll notify you when matching listings are available.</p>
+            </div>
+            <div class="faq ">
+                <h3>How secure are transactions on B-town Carz?</h3>
+                <p>We prioritize security by verifying sellers and providing tips for safe transactions. However, payments are made directly between buyers and sellers.</p>
+            </div>
+            <div class="faq ">
+                <h3>What types of cars are listed on B-town Carz?</h3>
+                <p>Our platform features a wide variety, from hatchbacks and sedans to SUVs and luxury vehicles, catering to every budget.</p>
+            </div>
+            <div class="faq ">
+                <h3>Can I edit or delete my car listing?</h3>
+                <p>Yes, you can directly contact or text us by using our number- 9012768055.</p>
+            </div>
+            <div class="faq ">
+                <h3>How long will my car listing remain active?</h3>
+                <p>Free listings remain active for 30 days, while premium listings have extended visibility. You can renew your listing if needed.</p>
+            </div>
+            <div class="faq ">
+                <h3>How do I contact B-town Carz for support?</h3>
+                <p>For assistance, visit our "Contact Us " page or email us at support@B-townCarz.in. We're here to help!</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js "></script>
+    <script>
+        // GSAP Animations
+        gsap.from(".about-section ", {
+            duration: 1,
+            x: -100,
+            opacity: 0,
+            delay: 0.5
+        });
+        gsap.from(".review-section ", {
+            duration: 1,
+            x: 100,
+            opacity: 0,
+            delay: 1
+        });
+        gsap.from(".map-section ", {
+            duration: 1,
+            y: 100,
+            opacity: 0,
+            delay: 1.5
+        });
+        gsap.from(".faq-section ", {
+            duration: 1,
+            y: -100,
+            opacity: 0,
+            delay: 2
+        });
+
+        // FAQ Accordion
+        const faqs = document.querySelectorAll('.faq');
+        faqs.forEach(faq => {
+            faq.addEventListener('click', () => {
+                faq.classList.toggle('active');
+            });
+        });
+    </script>
+
+
+
+    <!-- footer here -->
+
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo">B-TOWN CARZ</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="userAddcar.html">Post</a>
+                <a href="dreamCar.html">Dream Car</a>
+                <a href="contact.html">Contact</a>
+
+            </div>
+            <div class="contact-info">
+                <p>Phone: +91 9012768055</p>
+                <p>Email: btowncarz8055@gmail.com</p>
+                <p>Location: Bareilly, Uttar Pradesh, India</p>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="text">
+                <p>© 2024 B-TOWN CARZ. All rights reserved.</p>
+                <p>Your trusted marketplace for buying and selling second-hand cars.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CSS for Footer -->
+    <style>
+        .footer {
+            background: linear-gradient(135deg, #333, #555);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+            animation: slideIn 1s ease-out;
+        }
+        
+        .footer .logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .footer .nav-links,
+        .footer .social-links,
+        .footer .contact-info {
+            margin: 10px 0;
+        }
+        
+        .footer .nav-links a,
+        .footer .social-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .footer .nav-links a:hover,
+        .footer .social-links a:hover {
+            color: #f4a261;
+        }
+        
+        .footer .contact-info p {
+            margin: 5px 0;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .footer .social-links a {
+            font-size: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        .footer .text {
+            margin-top: 20px;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        @media (max-width: 768px) {
+            .footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes bounce {
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+
+    <!-- Font Awesome for Social Media Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+    <!-- end footer here 
+      -->
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1200,
+            /* Animation duration */
+            once: true,
+            /* Animation happens only once */
+        });
+    </script>
+</body>
+
+</html> transform: translateY(-5px); } }
+</style>
+
+<!-- Font Awesome for Social Media Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+<!-- end footer here 
+      -->
+
+<script>
+    // Initialize AOS
+    AOS.init({
+        duration: 1200,
+        /* Animation duration */
+        once: true,
+        /* Animation happens only once */
+    });
+</script>
+</body>
+
+</html>

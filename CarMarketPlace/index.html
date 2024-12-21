@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- AOS Library CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+    <style>
+        /* General Reset */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* Apply Google Font */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+            /* Your background color */
+            color: #333;
+            /* Dark text color for contrast */
+        }
+        
+        h2,
+        p {
+            font-weight: 700;
+            /* Bold for headings */
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            font-weight: 400;
+            /* Regular for paragraph text */
+            line-height: 1.6;
+        }
+        /* Navbar Styling */
+        
+        *,
+        *::after,
+        *::before {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .html {
+            font-size: 62.5%;
+        }
+        
+        .navbar input[type="checkbox"],
+        .navbar .hamburger-lines {
+            display: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 90%;
+            margin: auto;
+        }
+        
+        .navbar {
+            box-shadow: 0px 5px 10px 0px #aaa;
+            position: fixed;
+            width: 100%;
+            background: #fff;
+            color: #000;
+            opacity: 0.85;
+            z-index: 100;
+        }
+        
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            height: 64px;
+            align-items: center;
+        }
+        
+        .menu-items {
+            order: 2;
+            display: flex;
+        }
+        
+        .logo {
+            order: 1;
+            font-size: 2.3rem;
+        }
+        
+        .menu-items li {
+            list-style: none;
+            margin-left: 1.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .navbar a {
+            color: #444;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease-in-out;
+        }
+        
+        .navbar a:hover {
+            color: #117964;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                opacity: 0.95;
+            }
+            .navbar-container input[type="checkbox"],
+            .navbar-container .hamburger-lines {
+                display: block;
+            }
+            .navbar-container {
+                display: block;
+                position: relative;
+                height: 64px;
+            }
+            .navbar-container input[type="checkbox"] {
+                position: absolute;
+                display: block;
+                height: 32px;
+                width: 30px;
+                top: 20px;
+                left: 20px;
+                z-index: 5;
+                opacity: 0;
+                cursor: pointer;
+            }
+            .navbar-container .hamburger-lines {
+                display: block;
+                height: 28px;
+                width: 35px;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                z-index: 2;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .navbar-container .hamburger-lines .line {
+                display: block;
+                height: 4px;
+                width: 100%;
+                border-radius: 10px;
+                background: #333;
+            }
+            .navbar-container .hamburger-lines .line1 {
+                transform-origin: 0% 0%;
+                transition: transform 0.3s ease-in-out;
+            }
+            .navbar-container .hamburger-lines .line2 {
+                transition: transform 0.2s ease-in-out;
+            }
+            .navbar-container .hamburger-lines .line3 {
+                transform-origin: 0% 100%;
+                transition: transform 0.3s ease-in-out;
+            }
+            .navbar .menu-items {
+                padding-top: 100px;
+                background: #fff;
+                height: 100vh;
+                max-width: 300px;
+                transform: translate(-150%);
+                display: flex;
+                flex-direction: column;
+                margin-left: -40px;
+                padding-left: 40px;
+                transition: transform 0.5s ease-in-out;
+                box-shadow: 5px 0px 10px 0px #aaa;
+                overflow: scroll;
+            }
+            .navbar .menu-items li {
+                margin-bottom: 1.8rem;
+                font-size: 1.1rem;
+                font-weight: 500;
+            }
+            .logo {
+                position: absolute;
+                top: 10px;
+                right: 15px;
+                font-size: 2.5rem;
+            }
+            .navbar-container input[type="checkbox"]:checked~.menu-items {
+                transform: translateX(0);
+            }
+            .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
+                transform: rotate(45deg);
+            }
+            .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
+                transform: scaleY(0);
+            }
+            .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
+                transform: rotate(-45deg);
+            }
+        }
+        /* Hero Carousel */
+        /* Car Slider Section */
+        
+        .car-image-slider {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+        
+        .car-image-slider h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #222;
+            font-weight: bold;
+        }
+        
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            max-width: 800px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 1s ease-in-out;
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        /* Navigation Buttons */
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            padding: 10px;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        
+        .prev-btn {
+            left: 10px;
+        }
+        
+        .next-btn {
+            right: 10px;
+        }
+        
+        .carousel-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 768px) {
+            .carousel-slide {
+                height: 250px;
+            }
+        }
+        /* Car Collection */
+        
+        .car-category {
+            padding: 2rem;
+        }
+        
+        .car-category h2 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .car-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .car-card {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+            background-color: #fff;
+        }
+        
+        .car-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .car-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .car-card .details {
+            padding: 1rem;
+        }
+        
+        .car-card .wishlist {
+            color: grey;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .car-card .wishlist.active {
+            color: red;
+        }
+        /* Form Styling */
+        
+        .form-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 400px;
+        }
+        
+        .form-container input {
+            width: 100%;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .form-container button {
+            padding: 0.5rem 1rem;
+            background: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        /* Testimonial and Rating Section */
+        /* Testimonial Section Styling */
+        
+        .testimonial-section {
+            padding: 2rem;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        
+        .testimonials-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        /* .testimonials-container:hov {} */
+        
+        .testimonial {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .testimonial {
+            transition: transform 0.3s ease-in-out;
+            /* Smooth animation for transform */
+        }
+        
+        .testimonial:hover {
+            transform: translateY(-10px);
+            /* Move up by 10px on hover */
+        }
+        
+        .testimonial-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .rating {
+            margin-top: 1rem;
+        }
+        
+        .rating span {
+            font-size: 1.5rem;
+            color: gold;
+        }
+        /* Comment Section */
+        
+        .comment-section {
+            margin-top: 2rem;
+        }
+        
+        .comment-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        textarea {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 1rem;
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            display: block;
+        }
+        
+        button {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: #333;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        button:hover {
+            background: #555;
+        }
+        
+        #comments-display {
+            margin-top: 1rem;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .comment {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            word-wrap: break-word;
+        }
+        /* Responsive Adjustments  testimonial */
+        
+        @media (max-width: 768px) {
+            .testimonials-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .testimonial {
+                width: 90%;
+            }
+        }
+        /* companies slider  */
+        
+        .logo-slider-section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #222;
+        }
+        
+        .slider {
+            background: white;
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+            height: 120px;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+        }
+        
+        .slide-track {
+            display: flex;
+            animation: scroll 20s linear infinite;
+            width: calc(250px * 14);
+        }
+        
+        .slide {
+            width: 250px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-250px * 7));
+            }
+        }
+        /* end companies slider auto  */
+        /* Responsive */
+        
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                flex-direction: column;
+            }
+            .carousel-images {
+                height: 200px;
+            }
+            .car-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .carousel-images {
+                height: 150px;
+            }
+            .form-container {
+                width: 95%;
+            }
+        }
+        /* footer start */
+        
+        .footer {
+            background: linear-gradient(135deg, #ff5512, #240202);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+            animation: slideIn 1s ease-out;
+        }
+        
+        .footer .logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .footer .nav-links,
+        .footer .social-links,
+        .footer .contact-info {
+            margin: 10px 0;
+        }
+        
+        .footer .nav-links a,
+        .footer .social-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .footer .nav-links a:hover,
+        .footer .social-links a:hover {
+            color: #f4a261;
+        }
+        
+        .footer .contact-info p {
+            margin: 5px 0;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        .footer .social-links a {
+            font-size: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        .footer .text {
+            margin-top: 20px;
+            font-size: 14px;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        @media (max-width: 768px) {
+            .footer .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes bounce {
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container container">
+            <input type="checkbox" name="" id="">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+
+                <li>
+                    <a href="userAddcar.html">Posts</a>
+                </li>
+                <li>
+                    <a href="dreamCar.html">Dream Car</a>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <h3 class="logo">B-Town</h3>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="car-image-slider"><br>
+        <br>
+        <h2>Explore Our Car Collection</h2>
+        <div class="carousel">
+            <div class="carousel-track">
+                <img src="assets/images/tharImg.jpeg" alt="Car 1" class="carousel-slide">
+                <img src="assets/images/scropioImg.jpg" alt="Car 2" class="carousel-slide">
+                <img src="assets/images/fortunorImg.webp" alt="Car 3" class="carousel-slide">
+                <img src="assets/images/tharImg.jpeg" alt="Car 4" class="carousel-slide">
+                <img src="assets/images/xuvImg.jpg" alt="Car 5" class="carousel-slide">
+            </div>
+            <!-- Navigation Buttons -->
+            <button class="carousel-btn prev-btn">&#10094;</button>
+            <button class="carousel-btn next-btn">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- Car Collection Section -->
+    <div class="car-category" data-aos="slide-up">
+        <h2>Tata Cars</h2>
+        <div class="car-cards">
+            <!-- Car Cards will be dynamically generated here -->
+        </div>
+    </div>
+
+    <!-- Admin Form -->
+    <div class="form-container" id="formContainer">
+        <h3>Add New Car</h3>
+        <input type="text" id="carName" placeholder="Car Name">
+        <input type="text" id="carYear" placeholder="Year">
+        <input type="text" id="carPrice" placeholder="Price">
+        <button id="addCar">Add Car</button>
+    </div>
+
+
+    <button style="position: fixed; bottom: 20px; right: 20px;" onclick="toggleForm()">Admin Add</button>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+        <h2 class="section-title ">What Our Customers Say</h2>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <div class="testimonials-container " data-aos="fade-up " data-aos-delay="200 ">
+                <!-- Testimonial 1 -->
+                <div class="testimonial " data-aos="fade-up ">
+                    <img src="assets/images/OIP.jpeg " alt=" Customer 1 " class="testimonial-image ">
+                    <h3>Priyanshu K.</h3>
+                    <p>"Great service and amazing cars! "</p>
+                    <div class="rating ">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial " data-aos="fade-up " data-aos-delay="200 ">
+                    <img src="assets/images/OIP (1).jpeg " alt=" Customer 2 " class="testimonial-image ">
+                    <h3>Kriti Tyagi</h3>
+                    <p>"Affordable prices and great quality! "</p>
+                    <div class="rating ">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial " data-aos="zoon-in " data-aos-delay="200 ">>
+                    <img src="assets/images/OIP (2).jpeg " alt="Customer 3 " class="testimonial-image ">
+                    <h3>Rajesh S.</h3>
+                    <p>"Friendly staff and smooth experience! "</p>
+                    <div class="rating ">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Comment Section -->
+        <div class="comment-section ">
+            <h3>Leave a Comment</h3>
+            <textarea id="comment-input " placeholder="Write your comment here... " rows="4 "></textarea>
+            <button id="submit-comment ">Submit</button>
+            <div id="comments-display "></div>
+        </div>
+    </section>
+
+
+
+    <!-- companies slider auto
+      -->
+
+    <section class="logo-slider-section ">
+        <h2>Our Trusted Partners</h2>
+        <div class="slider " style="border-radius: 8px; ">
+            <div class="slide-track ">
+                <!-- Company Logos -->
+                <div class="slide "><img src="assets/images/mahindra.jpeg " alt="Company 1 "></div>
+                <div class="slide "><img src="assets/images/toyota.jpeg " alt="Company 2 "></div>
+                <div class="slide "><img src="assets/images/suzuki.jpeg " alt="Company 3 "></div>
+                <div class="slide "><img src="assets/images/nisan.jpeg " alt="Company 4 "></div>
+                <div class="slide "><img src="assets/images/tata.jpeg " alt="Company 5 "></div>
+                <div class="slide "><img src="assets/images/hundai.jpeg " alt="Company 6 "></div>
+                <div class="slide "><img src="assets/images/ford.jpeg.crdownload " alt="Company 7 "></div>
+
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer Section -->
+    <footer class="footer ">
+        <div class="container "><br>
+
+            <div style="display: flex; justify-content: center; align-items: center; ">
+                <br>
+                <div class="logo ">B-TOWN CARZ</div> <br>
+            </div>
+
+            <div class="nav-links ">
+                <a href="index.html ">Home</a>
+                <a href="about.html ">About</a>
+                <a href="userAddcar.html ">Post</a>
+                <a href="dreamCar.html ">Dream Car</a>
+
+
+                <a href="contact.html ">Contact</a>
+            </div>
+            <div class="contact-info ">
+                <p>Phone: +91 9012768055</p>
+                <p>Email: btowncarz8055@gmail.com</p>
+                <p>Location: Bareilly, Uttar Pradesh, India</p>
+            </div>
+            <div class="social-links ">
+                <a href="# "><i class="fab fa-facebook-f "></i></a>
+                <a href="# "><i class="fab fa-twitter "></i></a>
+                <a href="# "><i class="fab fa-instagram "></i></a>
+                <a href="# "><i class="fab fa-youtube "></i></a>
+                <a href="# "><i class="fab fa-whatsapp "></i></a>
+            </div>
+            <div class="text ">
+                <p>© 2024 B-TOWN CARZ. All rights reserved.</p>
+                <p>Your trusted marketplace for buying and selling second-hand cars.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- end companies slider auto -->
+    <script>
+        // Variables
+        const cars = [{
+            name: 'Tata Nexon',
+            year: 2023,
+            price: '$15,000',
+            image: 'https://via.placeholder.com/250x150?text=Tata+Nexon'
+        }, {
+            name: 'Tata Altroz',
+            year: 2023,
+            price: '$12,000',
+            image: 'https://via.placeholder.com/250x150?text=Tata+Altroz'
+        }, {
+            name: 'Tata Safari',
+            year: 2023,
+            price: '$20,000',
+            image: 'https://via.placeholder.com/250x150?text=Tata+Safari'
+        }];
+
+        // Functions
+        const addCarCard = (car) => {
+            const carCard = document.createElement('div');
+            carCard.className = 'car-card';
+            carCard.innerHTML = `
+                <img src="${car.image} " alt="${car.name} ">
+                <div class="details ">
+                    <h3>${car.name}</h3>
+                    <p>Year: ${car.year}</p>
+                    <p>Price: ${car.price}</p>
+                    <i class="wishlist " onclick="toggleWishlist(this) ">♥</i>
+                </div>
+            `;
+            document.querySelector('.car-cards').appendChild(carCard);
+        };
+
+        const toggleMenu = () => {
+            document.querySelector('.nav-links.mobile-menu').classList.toggle('active');
+        };
+
+        const toggleForm = () => {
+            document.getElementById('formContainer').classList.toggle('active');
+        };
+
+        const toggleWishlist = (icon) => {
+            icon.classList.toggle('active');
+        };
+
+        // Add all car cards
+        cars.forEach(car => addCarCard(car));
+
+        // Carousel functionality
+        const track = document.querySelector('.carousel-track');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+
+        let currentIndex = 0;
+
+        // Auto-Slide Functionality
+        function autoSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel();
+        }
+        let slideInterval = setInterval(autoSlide, 3000); // 3-second interval
+
+        // Update Carousel Position
+        function updateCarousel() {
+            const offset = -currentIndex * 100; // Each image takes 100% width
+            track.style.transform = `translateX(${offset}%)`;
+        }
+
+        // Manual Navigation
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel();
+            resetAutoSlide();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel();
+            resetAutoSlide();
+        });
+
+        // Reset Auto Slide Timer on Manual Action
+        function resetAutoSlide() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(autoSlide, 3000);
+        }
+
+
+
+        // companies slider js 
+
+        $(document).ready(function() {
+            let currentCardIndex = 0;
+            const cards = $('.we-card');
+            const totalCards = cards.length;
+
+            function updateCarousel() {
+                cards.removeClass('active prev-1 next-1 prev-2 next-2 prev-3 next-3');
+                $(cards[currentCardIndex]).addClass('active');
+
+                const prevIndex_1 = (currentCardIndex - 1 + totalCards) % totalCards;
+                const nextIndex_1 = (currentCardIndex + 1) % totalCards;
+                const prevIndex_2 = (currentCardIndex - 2 + totalCards) % totalCards;
+                const nextIndex_2 = (currentCardIndex + 2) % totalCards;
+                const prevIndex_3 = (currentCardIndex - 3 + totalCards) % totalCards;
+                const nextIndex_3 = (currentCardIndex + 3) % totalCards;
+
+                $(cards[prevIndex_1]).addClass('prev-1');
+                $(cards[nextIndex_1]).addClass('next-1');
+                $(cards[prevIndex_2]).addClass('prev-2');
+                $(cards[nextIndex_2]).addClass('next-2');
+                $(cards[prevIndex_3]).addClass('prev-3');
+                $(cards[nextIndex_3]).addClass('next-3');
+            }
+
+            updateCarousel();
+
+            $('.right').click(function() {
+                currentCardIndex = (currentCardIndex + 1) % totalCards;
+                updateCarousel();
+            });
+
+            $('.left').click(function() {
+                currentCardIndex = (currentCardIndex - 1 + totalCards) % totalCards;
+                updateCarousel();
+            });
+        });
+
+
+
+        // herosection slider1 js 
+        let list = document.querySelector('.slider .list');
+        let items = document.querySelectorAll('.slider .list .item');
+        let dots = document.querySelectorAll('.slider .dots li');
+        let prev = document.getElementById('prev');
+        let next = document.getElementById('next');
+
+        let active = 0;
+        let lengthitems = items.length - 1;
+
+        next.onclick = function() {
+            if (active + 1 > lengthitems) {
+                active = 0;
+            } else {
+                active = active + 1;
+            }
+            reloadslider();
+        }
+
+        prev.onclick = function() {
+            if (active - 1 < 0) {
+                active = lengthitems;
+            } else {
+                active = active - 1;
+            }
+            reloadslider();
+        }
+
+        let autoslide = setInterval(() => {
+            next.click();
+        }, 3000);
+
+        function reloadslider() {
+            let checkleft = items[active].offsetLeft;
+            list.style.left = -checkleft + 'px';
+
+            let lastactiveDot = document.querySelector('.slider .dots li.active');
+            if (lastactiveDot) lastactiveDot.classList.remove('active');
+            dots[active].classList.add('active');
+        }
+
+        dots.forEach((li, key) => {
+            li.addEventListener('click', function() {
+                active = key;
+                reloadslider();
+            })
+        })
+
+
+        // testimonial section js
+        const commentInput = document.getElementById('comment-input');
+        const submitButton = document.getElementById('submit-comment');
+        const commentsDisplay = document.getElementById('comments-display');
+
+        // Submit comment and display dynamically
+        submitButton.addEventListener('click', () => {
+            const commentText = commentInput.value.trim();
+            if (commentText !== '') {
+                const commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+                commentElement.textContent = commentText;
+                commentsDisplay.appendChild(commentElement);
+                commentInput.value = ''; // Clear input field
+            } else {
+                alert('Please enter a comment before submitting.');
+            }
+        });
+    </script>
+    <!-- AOS Library JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js "></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1200,
+            /* Animation duration */
+            once: true,
+            /* Animation happens only once */
+        });
+    </script>
+
+
+</body>
+
+</html>
